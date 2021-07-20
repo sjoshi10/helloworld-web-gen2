@@ -1,0 +1,27 @@
+
+Profile: InSpec Profile (helloworld-web)
+Version: 0.1.0
+Target:  local://
+
+[38;5;41m  ✔  helloworld-web-deployment-1: Validate helloworld-web ingress[0m
+[38;5;41m     ✔  Ingress host is expected to be 'helloworld.nemonik.com' stdout is expected to cmp == "helloworld.nemonik.com"[0m
+[38;5;41m     ✔  Ingress is expected to route traffic to 'helloworld-web' service stdout is expected to cmp == "helloworld-web"[0m
+[38;5;41m     ✔  Ingress is expected to route traffic to service http port stdout is expected to cmp == "http"[0m
+[38;5;41m  ✔  helloworld-web-deployment-2: Validate helloworld-web service[0m
+[38;5;41m     ✔  Service port is expected to be named 'http' stdout is expected to cmp == "http"[0m
+[38;5;41m     ✔  Service is expected to listen on port '80' stdout is expected to cmp == "80"[0m
+[38;5;41m     ✔  The Service port is expected to be a TCP port stdout is expected to cmp == "TCP"[0m
+[38;5;41m     ✔  Service port is expected to target port 'http' stdout is expected to cmp == "http"[0m
+[38;5;41m  ✔  helloworld-web-deployment-3: Validate helloworld-web pod[0m
+[38;5;41m     ✔  Pod is running container 'k3d-registry.nemonik.com:5000/nemonik/helloworld-web:latest' stdout is expected to cmp == "k3d-registry.nemonik.com:5000/nemonik/helloworld-web:latest"[0m
+[38;5;41m     ✔  Pod is running container whose port is 3000 stdout is expected to cmp == "3000"[0m
+[38;5;41m     ✔  Pod is running container whose port is named 'http' stdout is expected to cmp == "http"[0m
+[38;5;41m     ✔  Pod is running container whose port is named 'http' stdout is expected to cmp == "http"[0m
+[38;5;41m     ✔  Pod is running container whose port is a TCP port stdout is expected to cmp == "TCP"[0m
+[38;5;41m  ✔  helloworld-web-deployment-4: Validate helloworld-web deployment[0m
+[38;5;41m     ✔  Deployment ensure ready replicas is 1 stdout is expected to cmp == "1"[0m
+[38;5;41m     ✔  Deployment ensure replica count is 1 stdout is expected to cmp == "1"[0m
+
+
+Profile Summary: [38;5;41m4 successful controls[0m, 0 control failures, 0 controls skipped
+Test Summary: [38;5;41m14 successful[0m, 0 failures, 0 skipped

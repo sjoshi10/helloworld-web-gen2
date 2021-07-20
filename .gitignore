@@ -1,0 +1,13 @@
+# OS-specific
+.DS_Store
+
+# reports
+coverage.out
+golangci-lint.xml
+inspec_helloworld.json
+
+# binary
+./helloworld-web
+
+# sonar
+.scannerwork/
