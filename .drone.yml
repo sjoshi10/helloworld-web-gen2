@@ -34,7 +34,7 @@ steps:
     - latest
 
 - name: deploy
-  image: k3d-registry.nemonik.com:5000/nemonik/drone-kubectl:1.21.2
+  image: k3d-registry.nemonik.com:5000/nemonik/drone-kubectl:1.21.1
   settings:
     kubernetes_cert:
       from_secret: k8s_cert
