@@ -41,8 +41,8 @@ steps:
     kubernetes_token:
      from_secret: k8s_token
   commands:
-  - kubectl delete -f kubernetes/helloworld-web.yaml 2> /dev/null
-  - kubectl apply -f kubernetes/helloworld-web.yaml
+  - kubectl delete -f kubernetes/helloworld-web.yml 2> /dev/null
+  - kubectl apply -f kubernetes/helloworld-web.yml
   - kubectl wait --for=condition=ready pod -n helloworld-web -l app.kubernetes.io/component=helloworld-web --timeout=180s
 
 - name: inspec
