@@ -11,10 +11,14 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
+    username: sjoshi10
+    password:
+      from_secret: GH_TOKEN
     storage_driver: overlay
     insecure: true
     registry: ghcr.io
     repo: ghcr.io/sjoshi10/helloworld-web-gen2
+    
     force_tag: true
     tags:
     - latest
