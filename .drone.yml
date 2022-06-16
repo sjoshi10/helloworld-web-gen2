@@ -18,11 +18,6 @@ steps:
     force_tag: true
     tags:
     - latest
-trigger:
-  branch: 
-  - master
-  event:
-  - push
   
 -------
 
