@@ -14,7 +14,7 @@ steps:
     storage_driver: overlay
     insecure: true
     registry: ghcr.io
-    repo: docker push ghcr.io/sjoshi10/helloworld-web-gen2
+    repo: ghcr.io/sjoshi10/helloworld-web-gen2
     force_tag: true
     tags:
     - latest
