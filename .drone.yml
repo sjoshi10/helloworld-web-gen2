@@ -24,7 +24,7 @@ steps:
     - latest
     
 - name: deploy
-  image: sinlead/drone-kubectl
+  image: sjoshi10/drone-kubectl
   settings:
     kubernetes_server: 
       from_secret: K8S_SERVER
@@ -32,8 +32,13 @@ steps:
       from_secret: K8S_TOKEN
     kubernetes_cert:
       from_secret: K8S_CERT
+  environment: 
+    AWS_ACCESS_KEY_ID: 
+      from_secret: ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY: 
+      from_secret: SECRET_KEY
   commands:
-    - hostname
+    - aws s3 ls
     - kubectl get pods
     - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
   
