@@ -36,7 +36,7 @@ steps:
     - kubectl config --kubeconfig=default set-context default --cluster=default --namespace=default --user=default
     - aws eks update-kubeconfig --name qn-main-cluster-dev --region us-east-1
     - kubectl get pods
-    - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
+    - kubectl apply -f kubernetes/deployment.yml
   
 -------
 
