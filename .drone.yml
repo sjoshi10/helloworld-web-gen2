@@ -35,9 +35,6 @@ steps:
     repo: ghcr.io/sjoshi10/
     container: helloworld-web-gen2
     tag: latest
-trigger:
-  event:
-  - tag
   
 -------
 
