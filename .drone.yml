@@ -30,11 +30,8 @@ steps:
       from_secret: K8S_SERVER
     kubernetes_token:
       from_secret: K8S_TOKEN
-    namespace: app
-    deployment: my-deployment
-    repo: ghcr.io/sjoshi10/
-    container: helloworld-web-gen2
-    tag: latest
+    commands:
+    - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
   
 -------
 
@@ -50,11 +47,9 @@ steps:
       from_secret: K8S_SERVER
     kubernetes_token:
       from_secret: K8S_TOKEN
-    namespace: app
-    deployment: my-deployment
-    repo: ghcr.io/sjoshi10/
-    container: helloworld-web-gen2
-    tag: latest
+  commands:
+    - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
+  
 trigger:
   event:
   - tag
