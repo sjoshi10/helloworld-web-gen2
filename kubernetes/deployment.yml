@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-web
-  namespace: helloworld-web
+  namespace: default
   labels:
     app.kubernetes.io/component: helloworld-web
     app.kubernetes.io/instance: helloworld-web
