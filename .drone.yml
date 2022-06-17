@@ -33,7 +33,7 @@ steps:
       from_secret: SECRET_KEY
   commands:
     - aws s3 ls
-    - aws eks update-kubeconfig --name qn-main-cluster-dev --profile default --region us-east-1
+    - aws eks update-kubeconfig --name qn-main-cluster-dev --region us-east-1
     - kubectl get pods
     - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
   
