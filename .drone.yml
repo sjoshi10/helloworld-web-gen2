@@ -22,6 +22,22 @@ steps:
     force_tag: true
     tags:
     - latest
+    
+- name: deploy
+  image: sinlead/drone-kubectl
+  settings:
+    kubernetes_server: 
+      from_secret: K8S_SERVER
+    kubernetes_token:
+      from_secret: K8S_TOKEN
+    namespace: app
+    deployment: my-deployment
+    repo: ghcr.io/sjoshi10/
+    container: helloworld-web-gen2
+    tag: latest
+trigger:
+  event:
+  - tag
   
 -------
 
@@ -30,17 +46,18 @@ type: docker
 name: continuous_deployment
 
 steps:
-- name: publish
-  image: plugins/docker
+- name: deploy
+  image: sinlead/drone-kubectl
   settings:
-    storage_driver: overlay
-    insecure: true
-    registry: 192.168.0.201:5000
-    repo: 192.168.0.201:5000/nemonik/helloworld-web
-    force_tag: true
-    tags:
-    - latest
-
+    kubernetes_server: 
+      from_secret: K8S_SERVER
+    kubernetes_token:
+      from_secret: K8S_TOKEN
+    namespace: app
+    deployment: my-deployment
+    repo: ghcr.io/sjoshi10/
+    container: helloworld-web-gen2
+    tag: latest
 trigger:
   event:
   - tag
