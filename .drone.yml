@@ -33,6 +33,7 @@ steps:
     kubernetes_cert:
       from_secret: K8S_CERT
   commands:
+    - hostname
     - kubectl get pods
     - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
   
