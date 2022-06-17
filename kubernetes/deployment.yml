@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-web
+  namespace: helloworld-web
+  labels:
+    app.kubernetes.io/component: helloworld-web
+    app.kubernetes.io/instance: helloworld-web
+    app.kubernetes.io/name: helloworld-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: helloworld-web
+      app.kubernetes.io/instance: helloworld-web
+      app.kubernetes.io/name: helloworld-web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: helloworld-web
+        app.kubernetes.io/instance: helloworld-web
+        app.kubernetes.io/name: helloworld-web
+    spec:
+      containers:
+        - name: helloworld-web
+          image: "ghcr.io/sjoshi10/helloworld-web-gen2:latest"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+      restartPolicy: Always
