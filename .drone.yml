@@ -27,6 +27,7 @@ kind: pipeline
 type: docker
 name: deployment-staging 
 
+steps:
 - name: deploy
   image: sjoshi10/drone-kubectl
   settings:
@@ -50,6 +51,7 @@ kind: pipeline
 type: docker
 name: deployment-prod 
 
+steps:
 - name: deploy
   image: sjoshi10/drone-kubectl
   settings:
