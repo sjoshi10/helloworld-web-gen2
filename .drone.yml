@@ -22,7 +22,11 @@ steps:
     force_tag: true
     tags:
     - latest
-    
+-----
+kind: pipeline
+type: docker
+name: deployment-staging 
+
 - name: deploy
   image: sjoshi10/drone-kubectl
   settings:
@@ -37,26 +41,30 @@ steps:
     - aws eks update-kubeconfig --name qn-main-cluster-dev --region us-east-1
     - kubectl get pods
     - kubectl apply -f kubernetes/deployment.yml
-  
--------
-
+    
+trigger:
+  target:
+  - staging
+-----    
 kind: pipeline
 type: docker
-name: continuous_deployment
+name: deployment-prod 
 
-steps:
 - name: deploy
-  image: sinlead/drone-kubectl
+  image: sjoshi10/drone-kubectl
   settings:
-    kubernetes_server: 
-      from_secret: K8S_SERVER
-    kubernetes_token:
-      from_secret: K8S_TOKEN
-    kubernetes_cert:
-        from_secret:K8S_CERT
+  environment: 
+    AWS_ACCESS_KEY_ID: 
+      from_secret: ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY: 
+      from_secret: SECRET_KEY
   commands:
-    - kubectl create deployment my-dep --image=ghcr.io/sjoshi10/helloworld-web-gen2:latest
-  
+    - aws s3 ls
+    - kubectl config --kubeconfig=default set-context default --cluster=default --namespace=default --user=default
+    - aws eks update-kubeconfig --name qn-main-cluster-dev --region us-east-1
+    - kubectl get pods
+    - kubectl apply -f kubernetes/deployment.yml
+    
 trigger:
-  event:
-  - tag
+  target:
+  - production
