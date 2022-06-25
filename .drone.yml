@@ -10,6 +10,8 @@ steps:
     Ok: world
   commands:
   - export test=$TEST"_"$Ok
+  - sed 's/scratch/'$test'/2' playbook_upgrade_drone.yml
+  - cat Dockerfile
   - echo $test
   - make build
   
