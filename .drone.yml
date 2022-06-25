@@ -10,7 +10,7 @@ steps:
     Ok: world
   commands:
   - export test=$TEST"_"$Ok
-  - sed 's/scratch/${test}/2' Dockerfile
+  - sed 's/scratch/$test/1' Dockerfile
   - cat Dockerfile
   - echo $test
   - make build
