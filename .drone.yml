@@ -9,7 +9,7 @@ steps:
     TEST: hello
     Ok: world
   commands:
-  - export test="${TEST}_${Ok}"
+  - export test="$TEST_$Ok"
   - echo $test
   - make build
   
