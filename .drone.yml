@@ -29,6 +29,10 @@ steps:
     force_tag: true
     tags:
     - latest
+    
+trigger:
+  event:
+    - tag
 -----
 kind: pipeline
 type: docker
@@ -53,6 +57,7 @@ steps:
 trigger:
   target:
   - staging
+  
 -----    
 kind: pipeline
 type: docker
